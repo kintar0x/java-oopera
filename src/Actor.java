@@ -1,8 +1,16 @@
 public class Actor extends Person{
-    double height;
+    private double height;
 
     public Actor(String name, String surname, Gender gender, double height) {
         super(name, surname, gender);
+        this.height = height;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
         this.height = height;
     }
 
@@ -22,14 +30,12 @@ public class Actor extends Person{
         if (!super.equals(o)) {
             return false;
         }
-        return height == actor.height;
+        return super.equals(o) && height == actor.height;
     }
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + Double.hashCode(height);
-        return result;
+        return 31 * super.hashCode() + Double.hashCode(height);
     }
 
 
